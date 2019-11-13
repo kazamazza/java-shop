@@ -19,6 +19,7 @@ class Cart
     public static void addProduct(Product product) {
         if (product.getStock() >= 1) {
             items.add(product);
+            product.setStock(product.getStock() - 1);
             String message =  String.format("%s was added to cart", product.getName());
         } else {
             String message =  String.format("Sorry, %s is out of stock", product.getName());
@@ -27,7 +28,7 @@ class Cart
 
     public static void removeProduct(Product product) {
         items.remove(product);
-        product.setStock(product.getStock() +1);
+        product.setStock(product.getStock() + 1);
     }
 
     public static void clear() {
